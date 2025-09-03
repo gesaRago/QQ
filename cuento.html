@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Aventura del Código en C++</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .character {
+            font-style: italic;
+            color: #2980b9;
+        }
+        .error-message {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f9e2e2;
+            padding: 10px;
+            border: 1px solid #c0392b;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>La Aventura del Código en C++: Un Cuento de Errores y Depuración</h1>
+
+    <p>En el vasto y estructurado reino de la programación, vivía un joven y entusiasta desarrollador llamado Alex. Su sueño era construir aplicaciones asombrosas que pudieran mostrarse al mundo a través del mágico portal de la web, utilizando el poderoso lenguaje C++. Sin embargo, cada vez que intentaba plasmar sus ideas en una página HTML, se encontraba con unos traviesos seres llamados <span class="highlight">"Errores"</span>.</p>
+
+    <p>Alex estaba creando una calculadora simple para su página web. Con gran emoción, escribió su primer programa en C++ para sumar dos números. Luego, intentó pegar ese código directamente en su archivo HTML. Al abrir su página en el navegador, en lugar del resultado, apareció un mensaje de error que decía:</p>
+    <div class="error-message">¡ERROR DE COMPILACIÓN! SyntaxError: Unexpected token '#'.</div>
+
+    <p>Un sabio anciano, el Profesor HTML, apareció junto a él. <span class="character">"Ah, joven Alex,"</span> dijo con una sonrisa, <span class="character">"has encontrado a los <span class="highlight">Syntax Errors</span>. Tu navegador no entiende C++ directamente; solo habla HTML, CSS y JavaScript."</span></p>
+
+    <p>Alex preguntó con tristeza: <span class="character">"¿Entonces, mi C++ no sirve aquí?"</span></p>
+
+    <p><span class="character">"¡Claro que sí, pero no directamente!"</span>, respondió el Profesor. <span class="character">"Necesitas un <span class="highlight">intermediario</span>. Puedes compilar tu C++ a <span class="highlight">WebAssembly</span>, o bien, si es una aplicación que corre en el servidor, comunicarte con ella usando JavaScript. Pero por ahora, concentrémonos en los errores."</span></p>
+
+    <p>Alex decidió reescribir una parte de su código, intentando ser más "creativo". En una parte, hizo que su programa dividiera un número por cero. Lo compiló y lo ejecutó en su entorno de desarrollo. Esta vez, el programa se detuvo abruptamente, mostrando un nuevo error: el <span class="highlight">"Error en Tiempo de Ejecución (Runtime Error)"</span>. El Profesor HTML explicó: <span class="character">"Este es el <span class="highlight">'División por Cero'</span>, un error muy común. El compilador no lo ve porque la sintaxis es correcta, pero cuando el programa intenta hacer la operación, ¡pum! Falla. Debes prever estas situaciones en tu lógica."</span></p>
+
+    <p>Más tarde, Alex estaba trabajando en una sección donde quería mostrar una lista de nombres. Usó la función para manejar cadenas de texto, pero olvidó incluir la librería necesaria para que funcionara. Al intentar compilar, recibió un mensaje diferente:</p>
+    <div class="error-message">¡ERROR DE ENLAZADO/COMPILACIÓN! 'string' was not declared in this scope.</div>
+
+    <p><span class="character">"Este es un <span class="highlight">Semantic Error</span> o <span class="highlight">Linker Error</span>"</span>, explicó el Profesor. <span class="character">"Has usado una función, pero olvidaste decirle al compilador dónde encontrar su definición. Necesitas la línea de código para incluir esa librería."</span></p>
+
+    <p>El Profesor HTML sonrió. <span class="character">"Cada error es una oportunidad para aprender, Alex. Los errores de C++ en HTML no son más que un malentendido de plataformas. Para que tu C++ hable con la web, necesitarás herramientas como WebAssembly, o que un servidor ejecute tu código y le envíe la información a tu página web mediante algo como JSON a través de JavaScript."</span></p>
+
+    <p>Alex asintió, con una nueva comprensión. Ya no veía a los errores como enemigos, sino como guías que lo ayudaban a entender mejor las complejidades del código y los diferentes ecosistemas de la programación. Sabía que su camino era largo, pero con cada error superado, se acercaba más a crear sus aplicaciones soñadas.</p>
+
+    <p style="text-align: center; font-style: italic; margin-top: 30px;">**Fin.**</p>
+
+</body>
+</html>
