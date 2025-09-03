@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Web Unificada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="q.png">
+    <iframe src="boletin.html" width="850" height="1100" frameborder="0" style="border:none;"></iframe>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 20px;
+            color: #333;
+        }
+        .container-ot {
+            width: 800px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .header-ot {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .header-ot h1 {
+            font-size: 36px;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        .header-info {
+            line-height: 1.5;
+            text-align: right;
+        }
+        .header-info span {
+            font-weight: bold;
+        }
+        .section-header-ot {
+            background-color: #555;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-group-ot {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .form-row {
+            display: flex;
+            align-items: center;
+        }
+        .form-row label {
+            width: 100px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .form-row input[type="text"], .form-row select, .form-row textarea {
+            width: calc(100% - 110px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-row select {
+            width: 100%;
+        }
+        .form-row.radio-group label {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-row.radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .problem-description-section, .solution-section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .problem-description-section h2, .solution-section h2 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            padding: 0;
+            font-weight: bold;
+        }
+        .problem-description-section p {
+            margin: 5px 0;
+        }
+        .solution-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 5px 0;
+        }
+        .solution-section li {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <style>
+        :root {
+            --color-principal-bg: #000;
+            --color-secundario-bg: #1a1a1a;
+            --color-texto: #f0f0f0;
+            --color-acento: #e53935;
+            --color-acento-hover: #ff5252;
+        }
+
+        .southpole-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .southpole-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .southpole-logo .logo-icon {
+            height: 30px;
+            width: auto;
+            margin-right: 8px;
+            fill: var(--color-acento);
+            transition: fill 0.3s ease;
+        }
+
+        .southpole-logo:hover .logo-icon {
+            fill: var(--color-acento-hover);
+        }
+
+        .southpole-logo .logo-text {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--color-texto);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 25px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--color-texto);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-acento);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: var(--color-secundario-bg);
+            color: var(--color-texto);
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: var(--color-acento);
+            box-shadow: 0 0 8px rgba(229, 57, 53, 0.5);
+        }
+
+        .nav-icons .icon {
+            font-size: 1.5em;
+            color: var(--color-texto);
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-icons .icon:hover {
+            color: var(--color-acento);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: url("w.png") no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 20px;
+            transform: translateY(0);
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6em;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            letter-spacing: 5px;
+        }
+
+        .hero p {
+            font-size: 1.8em;
+            margin-top: 10px;
+            color: #ccc;
+        }
+        .products-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .products-section h2 {
+            font-size: 3em;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--color-texto);
+        }
+
+        .products-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-acento);
+            margin: 10px auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background-color: var(--color-secundario-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card img {
+            width: 75%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .product-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+        }
+
+        .product-info p {
+            font-weight: bold;
+            color: var(--color-acento);
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .product-info button {
+            background-color: var(--color-acento);
+            color: var(--color-texto);
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-info button:hover {
+            background-color: var(--color-acento-hover);
+            transform: scale(1.02);
+        }
+
+        .footer {
+            background-color: var(--color-secundario-bg);
+            color: #aaa;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                background-color: var(--color-principal-bg);
+                padding: 20px 0;
+                border-top: 1px solid #333;
+                margin-top: 15px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-icons {
+                flex-grow: 1;
+                justify-content: flex-end;
+            }
+            .nav-icons input {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 3em;
+                letter-spacing: 2px;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+        }
+        .who-we-are-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--color-principal-bg);
+        }
+        .who-we-are-section h2 {
+            font-size: 3em;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--color-texto);
+        }
+        .who-we-are-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-acento);
+            margin: 10px auto 0;
+        }
+        .who-we-are-content {
+            display: flex;
+            flex-direction: row;
+            gap: 70px;
+            align-items: center;
+            text-align: left;
+        }
+        .who-we-are-text {
+            flex: 1;
+        }
+    </style>
+
+    <style>
+        .estrofa {
+            width: 30%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .estrofa h2 {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 0;
+            color: #004d99;
+        }
+
+        .estrofa p {
+            white-space: pre-wrap;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container-top {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .container-center {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .container-bottom {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+    </style>
+
+    <style>
+        .container-hh {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 86, 179, 0.15);
+            border: 2px solid #0056b3;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #004080;
+            margin-bottom: 0.3em;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 1.5em;
+            font-size: 1.3rem;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #003366;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        thead tr {
+            background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #d1d9e6;
+            text-align: center;
+            vertical-align: middle;
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f7f9fc;
+        }
+
+        tbody tr:hover:not(.recreo) {
+            background-color: #d9e8ff;
+            cursor: default;
+        }
+
+        .recreo {
+            background-color: #ffecb3 !important;
+            font-weight: 700;
+            color: #bf5700 !important;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        tbody tr.recreo td {
+            border-bottom: none;
+        }
+
+        .notes {
+            margin-top: 35px;
+            border-top: 2px solid #d1d9e6;
+            padding-top: 20px;
+            color: #004080;
+        }
+
+        .notes h3 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .notes p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        @media (max-width: 720px) {
+            .info {
+                flex-direction: column;
+                gap: 8px;
+                font-size: 1rem;
+            }
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+
+    <style>
+        .container-tables {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .tables-section table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 90%;
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .tables-section th, .tables-section td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .tables-section th {
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tables-section tr:hover {
+            background-color: #e6f0ff;
+        }
+
+        .tables-section tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+
+    <style>
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .body-listas {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px 40px;
+            line-height: 1.6;
+            background: linear-gradient(
+                270deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3,
+                #ff0000
+            );
+            background-size: 1600% 1600%;
+            animation: rainbow 15s ease infinite;
+        }
+
+        .h1-listas {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .h2-listas {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .ol-listas, .ul-listas {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            padding: 20px 30px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .li-listas {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .ul-listas ul, .ol-listas ul {
+            background: #d0f0fd;
+            margin-top: 8px;
+            padding-left: 25px;
+            border-radius: 6px;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+        }
+
+        .ul-listas ul li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #0077b6;
+        }
+    </style>
+
+    <style>
+        .container-quiz {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        .h1-quiz {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .form-quiz {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px 20px;
+        }
+        legend {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.1rem;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="container-ot">
+            <div class="header-ot">
+                <h1>Orden de trabajo</h1>
+                <div class="header-info">
+                    <p>Nombre de empresa: <span>Cisco Systems, Inc.</span></p>
+                    <p>Contacto: <span>Gerente de oficina</span></p>
+                    <p>Dirección de la empresa: <span>170 West Tasman Drive, San José, CA 95134</span></p>
+                    <p>Teléfono: <span>408-526-4000</span></p>
+                </div>
+            </div>
+            <div class="section-header-ot">Generar un nuevo ticket</div>
+            <div class="form-group-ot">
+                <div class="form-row">
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria">
+                        <option>tarea</option>
+                        <option>incidente</option>
+                        <option>solicitud</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="codigo">Código</label>
+                    <input type="text" id="codigo" />
+                </div>
+                <div class="form-row">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo">
+                        <option>Computadora portátil</option>
+                        <option>Computadora de escritorio</option>
+                        <option>Impresora</option>
+                        <option>Red</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="estado">Estado</label>
+                    <select id="estado">
+                        <option>abierto</option>
+                        <option>en progreso</option>
+                        <option>resuelto</option>
+                        <option>cerrado</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento">
+                        <option>IT</option>
+                        <option>RRHH</option>
+                        <option>Contabilidad</option>
+                        <option>Ventas</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="contacto">Contacto del usuario</label>
+                    <input type="text" id="contacto" />
+                </div>
+                <div class="form-row">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad">
+                        <option>Baja</option>
+                        <option>Media</option>
+                        <option>Alta</option>
+                        <option>Urgente</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="tecnico">Técnico Asignado</label>
+                    <input type="text" id="tecnico" />
+                </div>
+            </div>
+        
+            <div class="form-group-ot">
+                <div class="form-row">
+                    <label for="conexion">Conexión de red</label>
+                    <select id="conexion">
+                        <option>Conexión de red inalámbrica</option>
+                        <option>Conexión por cable</option>
+                        <option>Sin conexión</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="plataforma">Plataforma de usuario</label>
+                    <select id="plataforma">
+                        <option>Windows 7</option>
+                        <option>Windows 10</option>
+                        <option>Windows 11</option>
+                        <option>macOS</option>
+                        <option>Linux</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="ambiente">Ambiente</label>
+                    <select id="ambiente">
+                        <option>Móvil</option>
+                        <option>Escritorio</option>
+                        <option>Servidor</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="problem-description-section">
+                <h2>Descripción del problema</h2>
+                <p>El usuario se queja de que la laptop no arranca.</p>
+                <p>No se ha instalado ningún software recientemente. No se han realizado cambios en el sistema operativo.</p>
+                <p>No se han instalado periféricos.</p>
+            </div>
+            
+            <div class="solution-section">
+                <h2>Problema Solución</h2>
+                <p>Reparaciones intentadas:</p>
+                <ul>
+                    <li>Reemplacé el adaptador de CA.</li>
+                    <li>Aseguré nuevamente la batería.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="#" class="southpole-logo">
+                        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+                        <span class="logo-text">SOUTHPOLE</span>
+                    </a>
+                    <ul class="nav-links" id="nav-links">
+                        <li><a href="#hero-section">Inicio</a></li>
+                        <li><a href="#products-section">Productos</a></li>
+                        <li><a href="#who-we-are-section">Quiénes Somos</a></li>
+                        <li><a href="#contact-section">Contacto</a></li>
+                    </ul>
+                    <div class="nav-icons">
+                        <div class="search-container">
+                            <input type="text" placeholder="Buscar...">
+                        </div>
+                        <span class="icon" aria-label="Carrito de compras">&#128722;</span>
+                        <span class="icon menu-toggle" id="menu-toggle">&#9776;</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="hero" id="hero-section">
+            <div class="hero-content">
+                <h1>SOUTHPOLE</h1>
+                <p>Estilo Urbano desde 1991</p>
+                <a href="#products-section" class="btn-primary">Ver Colección</a>
+            </div>
+        </div>
+
+        <section class="products-section" id="products-section">
+            <div class="container">
+                <h2>Nuestros Productos</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="v.png" alt="Sudadera con capucha Southpole">
+                        <div class="product-info">
+                            <h3>Sudadera con Capucha</h3>
+                            <p>$59.99</p>
+                            <button>Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="zz.png" alt="Pantalón de chándal Southpole">
+                        <div class="product-info">
+                            <h3>Pantalón de Chándal</h3>
+                            <p>$45.50</p>
+                            <button>Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="s.png" alt="Camiseta con logo Southpole">
+                        <div class="product-info">
+                            <h3>Camiseta Clásica</h3>
+                            <p>$29.99</p>
+                            <button>Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="br.png" alt="Chaqueta bomber Southpole">
+                        <div class="product-info">
+                            <h3>Chaqueta Bomber</h3>
+                            <p>$89.00</p>
+                            <button>Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="who-we-are-section" id="who-we-are-section">
+            <div class="container">
+                <h2>Quiénes Somos</h2>
+                <div class="who-we-are-content">
+                    <div class="who-we-are-text">
+                        <p>
+                            SOUTHPOLE es una marca legendaria de streetwear que ha sido un pilar de la cultura urbana desde 1991. Fundada en la ciudad de Nueva York, nos hemos destacado por nuestra dedicación a la ropa de calle auténtica y de alta calidad. Nuestro enfoque es simple: crear prendas que resistan la prueba del tiempo y se conviertan en elementos básicos del guardarropa urbano.
+                        </p>
+                        <p>
+                            Uno de los aspectos más icónicos de las prendas de SOUTHPOLE es el uso de los diferentes tags o etiquetas, que indican el período y el estilo de la prenda. Por ejemplo, los tags más conocidos son el Red Tag (etiqueta roja) y el Brown Tag (etiqueta marrón).
+                        </p>
+                        <p>
+                            Las prendas con etiqueta roja a menudo se asocian con los diseños de finales de los 90 y principios de los 2000, un período considerado vintage y muy buscado en el mundo de la moda urbana. Por otro lado, la etiqueta marrón generalmente representa un estilo un poco posterior, pero sigue siendo un símbolo de la herencia clásica de la marca. En resumen, estos tags son una forma de identificar la historia de la prenda y son muy valorados por los entusiastas del streetwear.
+                        </p>
+                        <a href="#" class="btn-primary">Descubre nuestra historia completa</a>
+                    </div>
+                    <div class="who-we-are-image">
+                        <img src="i.png" alt="Equipo de Southpole o imagen de inspiración">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="container">
+                <img src="sp.png" alt="Logo de Southpole" class="footer-logo">
+                <p>&copy; 2025 SOUTHPOLE. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </section>
+
+    <section>
+        <div class="container-top">
+            <div class="estrofa">
+                <h2>Coro</h2>
+                <p>
+                    Alcanzamos por fin la victoria
+                    En el campo feliz de la unión;
+                    Con ardientes fulgores de gloria
+                    Se ilumina la nueva nación.
+                </p>
+            </div>
+        </div>
+
+        <div class="container-center">
+            <div class="estrofa">
+                <h2>I</h2>
+                <p>
+                    En el mundo la paz es la norma
+                    La falange de un pueblo viril,
+                    Y el trabajo es el medio que forma
+                    Su grandeza y su gloria al vivir.
+                    <br><br>
+                    El progreso acaricia tus lares.
+                    Al compás de sublime canción;
+                    Ves rugir a tus pies ambos mares
+                    Que dan rumbo a tu noble misión.
+                </p>
+            </div>
+        </div>
+
+        <div class="container-bottom">
+            <div class="estrofa">
+                <h2>Coro</h2>
+                <p>
+                    Alcanzamos por fin la victoria
+                    En el campo feliz de la unión;
+                    Con ardientes fulgores de gloria
+                    Se ilumina la nueva nación.
+                </p>
+            </div>
+        </div>
+
+        <div class="container-top">
+            <div class="estrofa">
+                <h2>II</h2>
+                <p>
+                    En tu suelo cubierto de flores
+                    A los besos del tibio terral,
+                    Terminaron guerreros fragores;
+                    Sólo reina el amor fraternal.
+                    <br><br>
+                    Adelante la pica y la pala,
+                    Al trabajo sin más dilación;
+                    Y seremos así la falange
+                    De esta tierra feraz de promisión.
+                </p>
+            </div>
+        </div>
+
+        <div class="container-center">
+            <div class="estrofa">
+                <h2>Coro</h2>
+                <p>
+                    Alcanzamos por fin la victoria
+                    En el campo feliz de la unión;
+                    Con ardientes fulgores de gloria
+                    Se ilumina la nueva nación.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-hh" role="main" aria-label="Horario de Clases Jornada Matutina 2025">
+            <h1>Instituto Profesional y Técnico Don Bosco</h1>
+            <h2>Horario de Clases</h2>
+        
+            <div class="info">
+                <p><strong>Salón:</strong> Aula 101</p>
+                <p><strong>Jornada:</strong> Matutina</p>
+                <p><strong>Año Lectivo:</strong> 2025</p>
+            </div>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>I. 7:00 - 7:44</td>
+                        <td>MAT</td>
+                        <td>QUIM</td>
+                        <td>FIS</td>
+                        <td>ARQUITECTURA</td>
+                        <td>MAT</td>
+                    </tr>
+                    <tr>
+                        <td>II. 7:44 - 8:28</td>
+                        <td>MAT</td>
+                        <td>QUIM</td>
+                        <td>FIS</td>
+                        <td>ING</td>
+                        <td>MAT</td>
+                    </tr>
+                    <tr>
+                        <td>III. 8:28 - 9:12</td>
+                        <td>ING</td>
+                        <td>ARQUITECTURA</td>
+                        <td>MULTIMEDIA</td>
+                        <td>ING</td>
+                        <td>MULTIMEDIA</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="recreo" role="row">Recreo</td>
+                    </tr>
+                    <tr>
+                        <td>IV. 9:21 - 9:55</td>
+                        <td>ESP</td>
+                        <td>REDES</td>
+                        <td>ESP</td>
+                        <td>REDES</td>
+                        <td>EDUC FIS</td>
+                    </tr>
+                    <tr>
+                        <td>V. 9:55 - 10:29</td>
+                        <td>ESP</td>
+                        <td>MAT</td>
+                        <td>MAT</td>
+                        <td>ARQUITECTURA</td>
+                        <td>EDUC FIS</td>
+                    </tr>
+                    <tr>
+                        <td>VI. 10:29 - 11:03</td>
+                        <td>ARQUITECTURA</td>
+                        <td>HIST</td>
+                        <td>HIST</td>
+                        <td>ESP</td>
+                        <td>HIST</td>
+                    </tr>
+                    <tr>
+                        <td>VII. 11:03 - 11:37</td>
+                        <td>FIS</td>
+                        <td>LAB ING</td>
+                        <td>QUIM</td>
+                        <td>MULTIMEDIA</td>
+                        <td>ESP</td>
+                    </tr>
+                    <tr>
+                        <td>VIII. 11:37 - 12:11</td>
+                        <td>FIS</td>
+                        <td>LAB ING</td>
+                        <td>QUIM</td>
+                        <td>MULTIMEDIA</td>
+                        <td>ING</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="container-tables">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Deporte</th>
+                <th>Celular</th>
+                <th>Ciudad</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>Jean Sanjur</td>
+                <td>16</td>
+                <td>Football</td>
+                <td>Samsung A54</td>
+                <td>La Paz</td>
+                <td>jean@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Erick Rivera</td>
+                <td>18</td>
+                <td>Basketball</td>
+                <td>iPhone 14</td>
+                <td>Santa Cruz</td>
+                <td>erick@hotmail.com</td>
+            </tr>
+            <tr>
+                <td>Maria Morales</td>
+                <td>17</td>
+                <td>Baseball</td>
+                <td>iPhone 13</td>
+                <td>La Chorrera</td>
+                <td>maria@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Camilo Sanchez</td>
+                <td>18</td>
+                <td>Baseball</td>
+                <td>Pixel 7</td>
+                <td>Bocas del Toro</td>
+                <td>camilo@yahoo.com</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <div class="body-listas">
+            <h1 class="h1-listas">Mis Gustos Personales</h1>
+            
+            <h2 class="h2-listas">Películas Favoritas (Ordenadas)</h2>
+            <ol class="ol-listas">
+                <li>El Padrino</li>
+                <li>Pulp Fiction</li>
+                <li>El Señor de los Anillos: El Retorno del Rey</li>
+                <li>Gladiador</li>
+                <li>Interstellar</li>
+            </ol>
+            
+            <h2 class="h2-listas">Comida Favorita</h2>
+            <ul class="ul-listas">
+                <li>Pasta con salsa Alfredo</li>
+                <li>Pizza Margarita</li>
+                <li>Tacos al pastor</li>
+                <li>Sushi</li>
+            </ul>
+            
+            <h2 class="h2-listas">Libros que He Leído (Sin Orden)</h2>
+            <ul class="ul-listas">
+                <li>1984</li>
+                <li>Cien años de soledad</li>
+                <li>El código Da Vinci</li>
+                <li>Dune</li>
+            </ul>
+            
+            <h2 class="h2-listas">Hobbies</h2>
+            <ul class="ul-listas">
+                <li>Lectura de novelas de ciencia ficción y fantasía.</li>
+                <li>Jugar videojuegos.
+                    <ul>
+                        <li>The Witcher 3</li>
+                        <li>The Legend of Zelda: Breath of the Wild</li>
+                        <li>Cyberpunk 2077</li>
+                    </ul>
+                </li>
+                <li>Cocinar nuevas recetas.</li>
+                <li>Ver documentales sobre naturaleza.</li>
+                <li>Senderismo.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-quiz">
+            <h1 class="h1-quiz">Cuestionario sobre Panamá La Vieja</h1>
+            
+            <form id="quizForm" action="#" method="post" class="form-quiz">
+                <fieldset data-answer="B">
+                    <legend>1. ¿En qué año se fundó Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q1" value="A" required> 1505</label>
+                    <label><input type="radio" name="q1" value="B"> 1519</label>
+                    <label><input type="radio" name="q1" value="C"> 1535</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>2. ¿Quién fue el fundador de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q2" value="A" required> Pedro Arias Dávila</label>
+                    <label><input type="radio" name="q2" value="B"> Vasco Núñez de Balboa</label>
+                    <label><input type="radio" name="q2" value="C"> Cristóbal Colón</label>
+                </fieldset>
+            
+                <fieldset data-answer="C">
+                    <legend>3. ¿Cuál era la importancia estratégica de Panamá La Vieja en la época colonial?</legend>
+                    <label><input type="radio" name="q3" value="A" required> Centro de minería de oro</label>
+                    <label><input type="radio" name="q3" value="B"> Base naval española</label>
+                    <label><input type="radio" name="q3" value="C"> Puente comercial entre océanos Atlántico y Pacífico</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>4. ¿Qué evento provocó la destrucción de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q4" value="A" required> Terremoto</label>
+                    <label><input type="radio" name="q4" value="B"> Ataque de corsarios</label>
+                    <label><input type="radio" name="q4" value="C"> Incendio accidental</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>5. ¿Quién fue el corsario responsable del ataque que destruyó la ciudad?</legend>
+                    <label><input type="radio" name="q5" value="A" required> Henry Morgan</label>
+                    <label><input type="radio" name="q5" value="B"> Francis Drake</label>
+                    <label><input type="radio" name="q5" value="C"> Barbanegra</label>
+                </fieldset>
+            
+                <fieldset data-answer="C">
+                    <legend>6. ¿Qué restos históricos se pueden visitar hoy en Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q6" value="A" required> Fortalezas coloniales completas</label>
+                    <label><input type="radio" name="q6" value="B"> Museos modernos</label>
+                    <label><input type="radio" name="q6" value="C"> Ruinas arqueológicas y la iglesia</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>7. ¿En qué país se encuentra Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q7" value="A" required> Colombia</label>
+                    <label><input type="radio" name="q7" value="B"> Panamá</label>
+                    <label><input type="radio" name="q7" value="C"> Costa Rica</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>8. ¿Cuál fue el rol de Panamá La Vieja en el comercio colonial?</legend>
+                    <label><input type="radio" name="q8" value="A" required> Punto de paso y traslado de mercancías</label>
+                    <label><input type="radio" name="q8" value="B"> Puerto principal para esclavos</label>
+                    <label><input type="radio" name="q8" value="C"> Centro de producción agrícola</label>
+                </fieldset>
+            
+                <fieldset data-answer="C">
+                    <legend>9. ¿Qué significa el nombre “Panamá”?</legend>
+                    <label><input type="radio" name="q9" value="A" required> Tierra de muchos peces</label>
+                    <label><input type="radio" name="q9" value="B"> Pueblo de guerreros</label>
+                    <label><input type="radio" name="q9" value="C"> Lugar de abundancia de mariposas</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>10. ¿Qué ciudad se fundó después de la destrucción de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q10" value="A" required> Panamá Nueva</label>
+                    <label><input type="radio" name="q10" value="B"> Panamá (actual ciudad)</label>
+                    <label><input type="radio" name="q10" value="C"> Colón</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>11. ¿Cuál es la fecha que se celebra como el aniversario de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q11" value="A" required> 15 de agosto</label>
+                    <label><input type="radio" name="q11" value="B"> 3 de noviembre</label>
+                    <label><input type="radio" name="q11" value="C"> 28 de noviembre</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>12. ¿Por qué se trasladó la capital después de la destrucción de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q12" value="A" required> Por un desastre natural</label>
+                    <label><input type="radio" name="q12" value="B"> Para fortificar la nueva ciudad</label>
+                    <label><input type="radio" name="q12" value="C"> Por falta de recursos</label>
+                </fieldset>
+            
+                <fieldset data-answer="C">
+                    <legend>13. ¿Qué nombre se le da a las personas que buscan tesoros en las ruinas?</legend>
+                    <label><input type="radio" name="q13" value="A" required> Arqueólogos</label>
+                    <label><input type="radio" name="q13" value="B"> Historiadores</label>
+                    <label><input type="radio" name="q13" value="C"> Huacas</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>14. ¿Qué tipo de arquitectura predomina en las ruinas de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q14" value="A" required> Colonial española</label>
+                    <label><input type="radio" name="q14" value="B"> Renacentista</label>
+                    <label><input type="radio" name="q14" value="C"> Barroca</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>15. ¿Qué animal es el emblema de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q15" value="A" required> El águila</label>
+                    <label><input type="radio" name="q15" value="B"> La mariposa</label>
+                    <label><input type="radio" name="q15" value="C"> El jaguar</label>
+                </fieldset>
+            
+                <fieldset data-answer="C">
+                    <legend>16. ¿Qué material se usó para construir la mayoría de los edificios en la época colonial?</legend>
+                    <label><input type="radio" name="q16" value="A" required> Ladrillo</label>
+                    <label><input type="radio" name="q16" value="B"> Hormigón</label>
+                    <label><input type="radio" name="q16" value="C"> Adobe y madera</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>17. ¿Cómo era la economía de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q17" value="A" required> Basada en el comercio y el tránsito de mercancías</label>
+                    <label><input type="radio" name="q17" value="B"> Basada en la agricultura</label>
+                    <label><input type="radio" name="q17" value="C"> Basada en la pesca</label>
+                </fieldset>
+            
+                <fieldset data-answer="B">
+                    <legend>18. ¿Cuál es el significado histórico de la Torre de la Catedral?</legend>
+                    <label><input type="radio" name="q18" value="A" required> Es la única estructura completa que quedó en pie</label>
+                    <label><input type="radio" name="q18" value="B"> Es un símbolo de la resistencia de la ciudad</label>
+                    <label><input type="radio" name="q18" value="C"> Fue un mirador de la ciudad</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>19. ¿Cuál es la principal atracción turística de Panamá La Vieja?</legend>
+                    <label><input type="radio" name="q19" value="A" required> Las ruinas y el museo</label>
+                    <label><input type="radio" name="q19" value="B"> Las playas</label>
+                    <label><input type="radio" name="q19" value="C"> Las actividades deportivas únicamente</label>
+                </fieldset>
+            
+                <fieldset data-answer="A">
+                    <legend>20. ¿Cuál es tu lugar favorito para visitar en Panamá La Vieja y por qué?</legend>
+                    <label><input type="radio" name="q20" value="A" required> La Torre de la Catedral</label>
+                    <label><input type="radio" name="q20" value="B"> El Parque Natural Metropolitano</label>
+                    <label><input type="radio" name="q20" value="C"> Museo del Canal</label>
+                </fieldset>
+            
+                <button type="submit">Enviar respuestas</button>
+            </form>
+            
+            <div id="resultado"></div>
+            
+            <script>
+                const form = document.getElementById('quizForm');
+                const resultadoDiv = document.getElementById('resultado');
+            
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+            
+                    let totalPreguntas = 20;
+                    let correctas = 0;
+            
+                    const fieldsets = form.querySelectorAll('fieldset');
+            
+                    fieldsets.forEach((fieldset, index) => {
+                        const respuestaCorrecta = fieldset.getAttribute('data-answer');
+                        const nombrePregunta = 'q' + (index + 1);
+                        const respuestaUsuario = form.querySelector(`input[name="${nombrePregunta}"]:checked`);
+            
+                        if (respuestaUsuario && respuestaUsuario.value === respuestaCorrecta) {
+                            correctas++;
+                        }
+                    });
+            
+                    resultadoDiv.textContent = `Tienes ${correctas} de ${totalPreguntas} respuestas correctas.`;
+                });
+            </script>
+        </div>
+    </section>
+
+    <section>
+        
+    </section>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
